@@ -18,21 +18,21 @@ body{
   font-family:Arial,Helvetica,sans-serif;
   color:#fff;
   background:
-    radial-gradient(circle at top,#252525 0%,#0c0c0c 45%,#050505 100%);
+    radial-gradient(circle at top,#292929 0%,#0d0d0d 45%,#050505 100%);
 }
 
 .container{
   width:100%;
   max-width:900px;
   margin:auto;
-  padding:25px 15px 40px;
+  padding:20px 15px 40px;
 }
 
 /* HEADER */
 
 .header{
   text-align:center;
-  padding:25px 10px 30px;
+  padding:20px 10px 30px;
 }
 
 .logo{
@@ -44,13 +44,13 @@ body{
   justify-content:center;
   border-radius:22px;
   font-size:40px;
-  background:linear-gradient(135deg,#ffcc4d,#ff7b00);
+  background:linear-gradient(135deg,#ffcc4d,#ff7300);
   box-shadow:0 10px 40px rgba(255,174,0,.25);
 }
 
 .header h1{
-  margin-top:18px;
-  font-size:42px;
+  margin-top:17px;
+  font-size:40px;
   letter-spacing:2px;
   font-weight:900;
 }
@@ -66,9 +66,9 @@ body{
 .progress-box{
   padding:18px;
   margin-bottom:18px;
-  border:1px solid #252525;
+  border:1px solid #292929;
   border-radius:20px;
-  background:rgba(20,20,20,.8);
+  background:rgba(20,20,20,.85);
 }
 
 .progress-info{
@@ -80,7 +80,7 @@ body{
 }
 
 .progress-info b{
-  color:white;
+  color:#fff;
 }
 
 .progress{
@@ -98,23 +98,22 @@ body{
   transition:.4s;
 }
 
-/* TASK CARD */
+/* TASK */
 
 .task{
-  position:relative;
   display:flex;
-  gap:15px;
+  gap:14px;
   padding:20px;
   margin-bottom:15px;
   border:1px solid #292929;
   border-radius:22px;
-  background:rgba(18,18,18,.9);
+  background:rgba(18,18,18,.92);
   transition:.3s;
 }
 
 .task.active{
-  border-color:#8b650f;
-  box-shadow:0 0 30px rgba(255,174,0,.05);
+  border-color:#9a7215;
+  box-shadow:0 0 30px rgba(255,174,0,.06);
 }
 
 .task.locked{
@@ -122,7 +121,7 @@ body{
 }
 
 .task.completed{
-  border-color:#15915d;
+  border-color:#176b4d;
 }
 
 .number{
@@ -184,8 +183,6 @@ h2{
   font-size:13px;
 }
 
-/* STATUS */
-
 .status{
   height:max-content;
   padding:6px 9px;
@@ -194,6 +191,7 @@ h2{
   color:#888;
   font-size:9px;
   font-weight:bold;
+  white-space:nowrap;
 }
 
 .completed .status{
@@ -232,6 +230,12 @@ h2{
 .verify{
   background:linear-gradient(135deg,#ffc83d,#ff7900);
   color:#111;
+}
+
+/* VERIFY PEHLE HIDDEN */
+
+.verify.hidden{
+  display:none;
 }
 
 .verify:disabled{
@@ -307,8 +311,6 @@ h2{
   margin-top:4px;
 }
 
-/* FOOTER */
-
 footer{
   text-align:center;
   color:#555;
@@ -350,10 +352,6 @@ footer{
     font-size:15px;
   }
 
-  .top{
-    align-items:flex-start;
-  }
-
   .buttons{
     flex-direction:column;
   }
@@ -369,132 +367,143 @@ footer{
 
 <div class="container">
 
-  <!-- HEADER -->
+<!-- HEADER -->
 
-  <header class="header">
+<header class="header">
 
-    <div class="logo">
-      🦅
-    </div>
-
-    <h1>THE EAGLE⁰⁹</h1>
-
-    <p>Official Task Center</p>
-
-  </header>
-
-
-  <!-- PROGRESS -->
-
-  <div class="progress-box">
-
-    <div class="progress-info">
-
-      <span>Your Progress</span>
-
-      <b id="progressText">
-        0 / 3 Completed
-      </b>
-
-    </div>
-
-    <div class="progress">
-
-      <div
-        class="progress-bar"
-        id="progressBar">
-      </div>
-
-    </div>
-
+  <div class="logo">
+    🦅
   </div>
 
+  <h1>THE EAGLE⁰⁹</h1>
 
-  <!-- ========================= -->
-  <!-- TASK 1 -->
-  <!-- ========================= -->
+  <p>Official Task Center</p>
 
-  <div
-    class="task active"
-    id="task0">
+</header>
 
-    <div class="number">
-      01
+
+<!-- PROGRESS -->
+
+<div class="progress-box">
+
+  <div class="progress-info">
+    <span>Your Progress</span>
+
+    <b id="progressText">
+      0 / 3 Completed
+    </b>
+  </div>
+
+  <div class="progress">
+    <div
+      class="progress-bar"
+      id="progressBar">
     </div>
+  </div>
 
-    <div class="icon youtube">
-      ▶
-    </div>
+</div>
 
-    <div class="content">
 
-      <div class="top">
+<!-- ========================= -->
+<!-- YOUTUBE TASK -->
+<!-- ========================= -->
 
-        <div>
+<div
+  class="task active"
+  id="task0">
 
-          <div class="platform">
-            YOUTUBE
-          </div>
+  <div class="number">
+    01
+  </div>
 
-          <h2>
-            Subscribe to our channel
-          </h2>
+  <div class="icon youtube">
+    ▶
+  </div>
 
+  <div class="content">
+
+    <div class="top">
+
+      <div>
+
+        <div class="platform">
+          YOUTUBE
         </div>
 
-        <div
-          class="status"
-          id="status0">
-          AVAILABLE
-        </div>
-
-      </div>
-
-      <p class="description">
-        Open our YouTube channel, subscribe
-        and then come back to verify your task.
-      </p>
-
-      <div class="buttons">
-
-        <a
-          class="btn open"
-          href="https://youtube.com/@the-eagle.09?si=dlbeFWqUXY55lT5F"
-          target="_blank">
-          Open YouTube ↗
-        </a>
-
-        <button
-          class="btn verify"
-          id="verify0"
-          onclick="verifyTask(0)">
-          Verify
-        </button>
+        <h2>
+          Subscribe to our channel
+        </h2>
 
       </div>
 
       <div
-        class="timer"
-        id="timer0"
-        style="display:none;">
+        class="status"
+        id="status0">
 
-        <div
-          class="timer-circle"
-          id="count0">
-          10
-        </div>
+        OPEN TASK
 
-        <div class="timer-text">
+      </div>
 
-          <strong>
-            Verification complete
-          </strong>
+    </div>
 
-          <small>
-            Please wait before next task.
-          </small>
+    <p class="description">
+      First open our YouTube channel and
+      subscribe. After opening, the Verify
+      button will appear.
+    </p>
 
-        </div>
+    <div class="buttons">
+
+      <!-- OPEN -->
+
+      <a
+        class="btn open"
+        id="open0"
+        href="https://youtube.com/@the-eagle.09?si=dlbeFWqUXY55lT5F"
+        target="_blank"
+        onclick="openTask(0)">
+
+        Open YouTube ↗
+
+      </a>
+
+
+      <!-- VERIFY HIDDEN -->
+
+      <button
+        class="btn verify hidden"
+        id="verify0"
+        onclick="verifyTask(0)">
+
+        Verify
+
+      </button>
+
+    </div>
+
+
+    <div
+      class="timer"
+      id="timer0"
+      style="display:none;">
+
+      <div
+        class="timer-circle"
+        id="count0">
+
+        10
+
+      </div>
+
+      <div class="timer-text">
+
+        <strong>
+          Verification complete
+        </strong>
+
+        <small>
+          Please wait 10 seconds...
+        </small>
 
       </div>
 
@@ -502,93 +511,105 @@ footer{
 
   </div>
 
+</div>
 
-  <!-- ========================= -->
-  <!-- TASK 2 -->
-  <!-- ========================= -->
 
-  <div
-    class="task locked"
-    id="task1">
+<!-- ========================= -->
+<!-- INSTAGRAM TASK -->
+<!-- ========================= -->
 
-    <div class="number">
-      02
-    </div>
+<div
+  class="task locked"
+  id="task1">
 
-    <div class="icon instagram">
-      ◎
-    </div>
+  <div class="number">
+    02
+  </div>
 
-    <div class="content">
+  <div class="icon instagram">
+    ◎
+  </div>
 
-      <div class="top">
+  <div class="content">
 
-        <div>
+    <div class="top">
 
-          <div class="platform">
-            INSTAGRAM
-          </div>
+      <div>
 
-          <h2>
-            Follow our Instagram
-          </h2>
-
+        <div class="platform">
+          INSTAGRAM
         </div>
 
-        <div
-          class="status"
-          id="status1">
-          LOCKED
-        </div>
-
-      </div>
-
-      <p class="description">
-        Follow our Instagram profile and
-        return here to verify your task.
-      </p>
-
-      <div class="buttons">
-
-        <a
-          class="btn open"
-          href="https://www.instagram.com/dileepsingh__rathore?stkn=Y2duY3AxYWQ3Z2Q4&utm_source=qr"
-          target="_blank">
-          Open Instagram ↗
-        </a>
-
-        <button
-          class="btn verify"
-          id="verify1"
-          onclick="verifyTask(1)"
-          disabled>
-          Verify
-        </button>
+        <h2>
+          Follow our Instagram
+        </h2>
 
       </div>
 
       <div
-        class="timer"
-        id="timer1"
-        style="display:none;">
+        class="status"
+        id="status1">
 
-        <div
-          class="timer-circle"
-          id="count1">
-          10
-        </div>
+        LOCKED
 
-        <div class="timer-text">
+      </div>
 
-          <strong>
-            Verification complete
-          </strong>
+    </div>
 
-          <small>
-            Please wait before next task.
-          </small>
+    <p class="description">
+      Follow our Instagram profile.
+      Open the profile first, then Verify
+      will appear.
+    </p>
 
-        </div>
+    <div class="buttons">
+
+      <a
+        class="btn open"
+        id="open1"
+        href="https://www.instagram.com/dileepsingh__rathore?stkn=Y2duY3AxYWQ3Z2Q4&utm_source=qr"
+        target="_blank"
+        onclick="openTask(1)">
+
+        Open Instagram ↗
+
+      </a>
+
+
+      <button
+        class="btn verify hidden"
+        id="verify1"
+        onclick="verifyTask(1)">
+
+        Verify
+
+      </button>
+
+    </div>
+
+
+    <div
+      class="timer"
+      id="timer1"
+      style="display:none;">
+
+      <div
+        class="timer-circle"
+        id="count1">
+
+        10
+
+      </div>
+
+      <div class="timer-text">
+
+        <strong>
+          Verification complete
+        </strong>
+
+        <small>
+          Please wait 10 seconds...
+        </small>
 
       </div>
 
@@ -596,93 +617,105 @@ footer{
 
   </div>
 
+</div>
 
-  <!-- ========================= -->
-  <!-- TASK 3 -->
-  <!-- ========================= -->
 
-  <div
-    class="task locked"
-    id="task2">
+<!-- ========================= -->
+<!-- TELEGRAM TASK -->
+<!-- ========================= -->
 
-    <div class="number">
-      03
-    </div>
+<div
+  class="task locked"
+  id="task2">
 
-    <div class="icon telegram">
-      ✈
-    </div>
+  <div class="number">
+    03
+  </div>
 
-    <div class="content">
+  <div class="icon telegram">
+    ✈
+  </div>
 
-      <div class="top">
+  <div class="content">
 
-        <div>
+    <div class="top">
 
-          <div class="platform">
-            TELEGRAM
-          </div>
+      <div>
 
-          <h2>
-            Join our Telegram channel
-          </h2>
-
+        <div class="platform">
+          TELEGRAM
         </div>
 
-        <div
-          class="status"
-          id="status2">
-          LOCKED
-        </div>
-
-      </div>
-
-      <p class="description">
-        Join our Telegram channel and
-        verify the final task.
-      </p>
-
-      <div class="buttons">
-
-        <a
-          class="btn open"
-          href="https://t.me/TheEagle09inc"
-          target="_blank">
-          Open Telegram ↗
-        </a>
-
-        <button
-          class="btn verify"
-          id="verify2"
-          onclick="verifyTask(2)"
-          disabled>
-          Verify
-        </button>
+        <h2>
+          Join our Telegram channel
+        </h2>
 
       </div>
 
       <div
-        class="timer"
-        id="timer2"
-        style="display:none;">
+        class="status"
+        id="status2">
 
-        <div
-          class="timer-circle"
-          id="count2">
-          10
-        </div>
+        LOCKED
 
-        <div class="timer-text">
+      </div>
 
-          <strong>
-            Task completed
-          </strong>
+    </div>
 
-          <small>
-            All tasks are now completed.
-          </small>
+    <p class="description">
+      Join our Telegram channel and
+      open the task. Then Verify will
+      appear.
+    </p>
 
-        </div>
+    <div class="buttons">
+
+      <a
+        class="btn open"
+        id="open2"
+        href="https://t.me/TheEagle09inc"
+        target="_blank"
+        onclick="openTask(2)">
+
+        Open Telegram ↗
+
+      </a>
+
+
+      <button
+        class="btn verify hidden"
+        id="verify2"
+        onclick="verifyTask(2)">
+
+        Verify
+
+      </button>
+
+    </div>
+
+
+    <div
+      class="timer"
+      id="timer2"
+      style="display:none;">
+
+      <div
+        class="timer-circle"
+        id="count2">
+
+        10
+
+      </div>
+
+      <div class="timer-text">
+
+        <strong>
+          Task completed
+        </strong>
+
+        <small>
+          Please wait 10 seconds...
+        </small>
 
       </div>
 
@@ -690,126 +723,93 @@ footer{
 
   </div>
 
+</div>
 
-  <!-- COMPLETE MESSAGE -->
 
-  <div
-    class="complete"
-    id="complete"
-    style="display:none;">
+<!-- COMPLETE -->
 
-    <div class="complete-icon">
-      🦅
-    </div>
+<div
+  class="complete"
+  id="complete"
+  style="display:none;">
 
-    <div>
+  <div class="complete-icon">
+    🦅
+  </div>
 
-      <strong>
-        All Tasks Completed!
-      </strong>
+  <div>
 
-      <p>
-        Thanks for supporting THE EAGLE⁰⁹.
-      </p>
+    <strong>
+      All Tasks Completed!
+    </strong>
 
-    </div>
+    <p>
+      Thanks for supporting THE EAGLE⁰⁹.
+    </p>
 
   </div>
 
+</div>
 
-  <footer>
-    THE EAGLE⁰⁹ • OFFICIAL TASK CENTER
-  </footer>
+
+<footer>
+  THE EAGLE⁰⁹ • OFFICIAL TASK CENTER
+</footer>
 
 </div>
 
 
 <script>
 
-/* ============================
-   TASK SYSTEM
-============================ */
-
 let completed = 0;
 
-function updateProgress(){
 
-  document.getElementById("progressText")
-    .innerText =
-    completed + " / 3 Completed";
+/*
+========================================
+OPEN TASK
+========================================
 
-  document.getElementById("progressBar")
-    .style.width =
-    (completed / 3 * 100) + "%";
+User jab Open YouTube / Instagram /
+Telegram dabata hai, Verify button
+visible ho jata hai.
+*/
 
+function openTask(index){
 
-  for(let i = 0; i < 3; i++){
-
-    const task =
-      document.getElementById("task" + i);
-
-    const verify =
-      document.getElementById("verify" + i);
-
-    const status =
-      document.getElementById("status" + i);
-
-
-    if(i < completed){
-
-      task.classList.remove("locked");
-      task.classList.remove("active");
-      task.classList.add("completed");
-
-      status.innerText =
-        "COMPLETED";
-
-      verify.disabled = true;
-
-    }
-
-    else if(i === completed){
-
-      task.classList.remove("locked");
-      task.classList.add("active");
-
-      status.innerText =
-        "AVAILABLE";
-
-      verify.disabled = false;
-
-    }
-
-    else{
-
-      task.classList.add("locked");
-      task.classList.remove("active");
-
-      status.innerText =
-        "LOCKED";
-
-      verify.disabled = true;
-
-    }
-
+  // Sirf current task open ho sakta hai
+  if(index !== completed){
+    return;
   }
 
+  const verify =
+    document.getElementById("verify" + index);
 
-  if(completed === 3){
+  const status =
+    document.getElementById("status" + index);
 
-    document.getElementById("complete")
-      .style.display = "flex";
+  /*
+  Verify button show
+  */
 
-  }
+  verify.classList.remove("hidden");
 
+  status.innerText =
+    "READY TO VERIFY";
 }
 
 
-/* ============================
-   VERIFY TASK
-============================ */
+/*
+========================================
+VERIFY TASK
+========================================
+*/
 
 function verifyTask(index){
+
+  /*
+  Current task ke alawa
+  koi task verify nahi hoga.
+  */
 
   if(index !== completed){
     return;
@@ -826,7 +826,16 @@ function verifyTask(index){
     document.getElementById("count" + index);
 
 
+  /*
+  Verify button disable
+  */
+
   verify.disabled = true;
+
+
+  /*
+  Timer show
+  */
 
   timer.style.display = "flex";
 
@@ -850,9 +859,17 @@ function verifyTask(index){
         clearInterval(interval);
 
 
+        /*
+        Timer hide
+        */
+
         timer.style.display =
           "none";
 
+
+        /*
+        Task complete
+        */
 
         completed++;
 
@@ -860,16 +877,22 @@ function verifyTask(index){
         updateProgress();
 
 
+        /*
+        Next task par scroll
+        */
+
         if(completed < 3){
 
           setTimeout(function(){
 
-            document.getElementById(
-              "task" + completed
-            ).scrollIntoView({
-              behavior:"smooth",
-              block:"center"
-            });
+            document
+              .getElementById(
+                "task" + completed
+              )
+              .scrollIntoView({
+                behavior:"smooth",
+                block:"center"
+              });
 
           },300);
 
@@ -882,7 +905,114 @@ function verifyTask(index){
 }
 
 
-/* INITIAL */
+/*
+========================================
+UPDATE UI
+========================================
+*/
+
+function updateProgress(){
+
+  document.getElementById(
+    "progressText"
+  ).innerText =
+    completed + " / 3 Completed";
+
+
+  document.getElementById(
+    "progressBar"
+  ).style.width =
+    (completed / 3 * 100) + "%";
+
+
+  for(let i = 0; i < 3; i++){
+
+    const task =
+      document.getElementById(
+        "task" + i
+      );
+
+    const verify =
+      document.getElementById(
+        "verify" + i
+      );
+
+    const status =
+      document.getElementById(
+        "status" + i
+      );
+
+
+    /*
+    COMPLETED
+    */
+
+    if(i < completed){
+
+      task.classList.remove("locked");
+      task.classList.remove("active");
+      task.classList.add("completed");
+
+      status.innerText =
+        "COMPLETED";
+
+      verify.disabled = true;
+
+    }
+
+
+    /*
+    CURRENT TASK
+    */
+
+    else if(i === completed){
+
+      task.classList.remove("locked");
+      task.classList.add("active");
+
+      status.innerText =
+        "OPEN TASK";
+
+    }
+
+
+    /*
+    LOCKED
+    */
+
+    else{
+
+      task.classList.add("locked");
+      task.classList.remove("active");
+
+      status.innerText =
+        "LOCKED";
+
+      verify.classList.add("hidden");
+
+    }
+
+  }
+
+
+  /*
+  ALL COMPLETED
+  */
+
+  if(completed === 3){
+
+    document.getElementById(
+      "complete"
+    ).style.display = "flex";
+
+  }
+
+}
+
+
+/*
+INITIAL LOAD
+*/
 
 updateProgress();
 
