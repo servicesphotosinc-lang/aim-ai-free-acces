@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>THE EAGLE⁰⁹ | Task Center</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  min-height:100vh;
+  font-family:Arial,Helvetica,sans-serif;
+  color:#fff;
+  background:
+    radial-gradient(circle at top,#252525 0%,#0c0c0c 45%,#050505 100%);
+}
+
+.container{
+  width:100%;
+  max-width:900px;
+  margin:auto;
+  padding:25px 15px 40px;
+}
+
+/* HEADER */
+
+.header{
+  text-align:center;
+  padding:25px 10px 30px;
+}
+
+.logo{
+  width:75px;
+  height:75px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:22px;
+  font-size:40px;
+  background:linear-gradient(135deg,#ffcc4d,#ff7b00);
+  box-shadow:0 10px 40px rgba(255,174,0,.25);
+}
+
+.header h1{
+  margin-top:18px;
+  font-size:42px;
+  letter-spacing:2px;
+  font-weight:900;
+}
+
+.header p{
+  margin-top:8px;
+  color:#999;
+  font-size:14px;
+}
+
+/* PROGRESS */
+
+.progress-box{
+  padding:18px;
+  margin-bottom:18px;
+  border:1px solid #252525;
+  border-radius:20px;
+  background:rgba(20,20,20,.8);
+}
+
+.progress-info{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:10px;
+  font-size:13px;
+  color:#aaa;
+}
+
+.progress-info b{
+  color:white;
+}
+
+.progress{
+  width:100%;
+  height:8px;
+  background:#292929;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress-bar{
+  width:0%;
+  height:100%;
+  background:linear-gradient(90deg,#ffcc33,#ff7300);
+  transition:.4s;
+}
+
+/* TASK CARD */
+
+.task{
+  position:relative;
+  display:flex;
+  gap:15px;
+  padding:20px;
+  margin-bottom:15px;
+  border:1px solid #292929;
+  border-radius:22px;
+  background:rgba(18,18,18,.9);
+  transition:.3s;
+}
+
+.task.active{
+  border-color:#8b650f;
+  box-shadow:0 0 30px rgba(255,174,0,.05);
+}
+
+.task.locked{
+  opacity:.45;
+}
+
+.task.completed{
+  border-color:#15915d;
+}
+
+.number{
+  color:#777;
+  font-weight:bold;
+  font-size:13px;
+  padding-top:10px;
+}
+
+.icon{
+  min-width:55px;
+  height:55px;
+  border-radius:17px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:25px;
+  font-weight:bold;
+}
+
+.youtube{
+  background:#ff0000;
+}
+
+.instagram{
+  background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);
+}
+
+.telegram{
+  background:#229ed9;
+}
+
+.content{
+  width:100%;
+}
+
+.top{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.platform{
+  color:#ffbd32;
+  font-size:10px;
+  font-weight:bold;
+  letter-spacing:1.5px;
+}
+
+h2{
+  margin-top:5px;
+  font-size:18px;
+}
+
+.description{
+  color:#999;
+  margin-top:8px;
+  line-height:1.5;
+  font-size:13px;
+}
+
+/* STATUS */
+
+.status{
+  height:max-content;
+  padding:6px 9px;
+  border:1px solid #333;
+  border-radius:20px;
+  color:#888;
+  font-size:9px;
+  font-weight:bold;
+}
+
+.completed .status{
+  color:#35e69b;
+  border-color:#176b4d;
+}
+
+/* BUTTONS */
+
+.buttons{
+  display:flex;
+  gap:10px;
+  margin-top:15px;
+}
+
+.btn{
+  flex:1;
+  min-height:42px;
+  border:0;
+  border-radius:12px;
+  cursor:pointer;
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  font-size:12px;
+  transition:.2s;
+}
+
+.open{
+  background:#f1f1f1;
+  color:#111;
+}
+
+.verify{
+  background:linear-gradient(135deg,#ffc83d,#ff7900);
+  color:#111;
+}
+
+.verify:disabled{
+  opacity:.4;
+  cursor:not-allowed;
+}
+
+.btn:hover:not(:disabled){
+  transform:translateY(-2px);
+}
+
+/* TIMER */
+
+.timer{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:15px;
+  padding:12px;
+  border-radius:14px;
+  background:#1b170e;
+  border:1px solid #4b3814;
+}
+
+.timer-circle{
+  width:42px;
+  height:42px;
+  border:2px solid #ffb91f;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#ffbd32;
+  font-weight:bold;
+}
+
+.timer-text strong{
+  display:block;
+  font-size:12px;
+}
+
+.timer-text small{
+  display:block;
+  color:#888;
+  margin-top:4px;
+  font-size:10px;
+}
+
+/* COMPLETE */
+
+.complete{
+  display:flex;
+  gap:15px;
+  align-items:center;
+  padding:18px;
+  border:1px solid #176b4d;
+  background:#0b2119;
+  border-radius:18px;
+  margin-top:15px;
+}
+
+.complete-icon{
+  font-size:30px;
+}
+
+.complete strong{
+  color:#38df9a;
+}
+
+.complete p{
+  color:#888;
+  font-size:12px;
+  margin-top:4px;
+}
+
+/* FOOTER */
+
+footer{
+  text-align:center;
+  color:#555;
+  font-size:10px;
+  letter-spacing:1px;
+  margin-top:30px;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+  .container{
+    padding:15px 10px 30px;
+  }
+
+  .header h1{
+    font-size:31px;
+  }
+
+  .task{
+    padding:15px;
+    gap:10px;
+  }
+
+  .number{
+    display:none;
+  }
+
+  .icon{
+    min-width:45px;
+    width:45px;
+    height:45px;
+    border-radius:13px;
+    font-size:20px;
+  }
+
+  h2{
+    font-size:15px;
+  }
+
+  .top{
+    align-items:flex-start;
+  }
+
+  .buttons{
+    flex-direction:column;
+  }
+
+  .btn{
+    width:100%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+
+  <header class="header">
+
+    <div class="logo">
+      🦅
+    </div>
+
+    <h1>THE EAGLE⁰⁹</h1>
+
+    <p>Official Task Center</p>
+
+  </header>
+
+
+  <!-- PROGRESS -->
+
+  <div class="progress-box">
+
+    <div class="progress-info">
+
+      <span>Your Progress</span>
+
+      <b id="progressText">
+        0 / 3 Completed
+      </b>
+
+    </div>
+
+    <div class="progress">
+
+      <div
+        class="progress-bar"
+        id="progressBar">
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================= -->
+  <!-- TASK 1 -->
+  <!-- ========================= -->
+
+  <div
+    class="task active"
+    id="task0">
+
+    <div class="number">
+      01
+    </div>
+
+    <div class="icon youtube">
+      ▶
+    </div>
+
+    <div class="content">
+
+      <div class="top">
+
+        <div>
+
+          <div class="platform">
+            YOUTUBE
+          </div>
+
+          <h2>
+            Subscribe to our channel
+          </h2>
+
+        </div>
+
+        <div
+          class="status"
+          id="status0">
+          AVAILABLE
+        </div>
+
+      </div>
+
+      <p class="description">
+        Open our YouTube channel, subscribe
+        and then come back to verify your task.
+      </p>
+
+      <div class="buttons">
+
+        <a
+          class="btn open"
+          href="https://youtube.com/@the-eagle.09?si=dlbeFWqUXY55lT5F"
+          target="_blank">
+          Open YouTube ↗
+        </a>
+
+        <button
+          class="btn verify"
+          id="verify0"
+          onclick="verifyTask(0)">
+          Verify
+        </button>
+
+      </div>
+
+      <div
+        class="timer"
+        id="timer0"
+        style="display:none;">
+
+        <div
+          class="timer-circle"
+          id="count0">
+          10
+        </div>
+
+        <div class="timer-text">
+
+          <strong>
+            Verification complete
+          </strong>
+
+          <small>
+            Please wait before next task.
+          </small>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================= -->
+  <!-- TASK 2 -->
+  <!-- ========================= -->
+
+  <div
+    class="task locked"
+    id="task1">
+
+    <div class="number">
+      02
+    </div>
+
+    <div class="icon instagram">
+      ◎
+    </div>
+
+    <div class="content">
+
+      <div class="top">
+
+        <div>
+
+          <div class="platform">
+            INSTAGRAM
+          </div>
+
+          <h2>
+            Follow our Instagram
+          </h2>
+
+        </div>
+
+        <div
+          class="status"
+          id="status1">
+          LOCKED
+        </div>
+
+      </div>
+
+      <p class="description">
+        Follow our Instagram profile and
+        return here to verify your task.
+      </p>
+
+      <div class="buttons">
+
+        <a
+          class="btn open"
+          href="https://www.instagram.com/dileepsingh__rathore?stkn=Y2duY3AxYWQ3Z2Q4&utm_source=qr"
+          target="_blank">
+          Open Instagram ↗
+        </a>
+
+        <button
+          class="btn verify"
+          id="verify1"
+          onclick="verifyTask(1)"
+          disabled>
+          Verify
+        </button>
+
+      </div>
+
+      <div
+        class="timer"
+        id="timer1"
+        style="display:none;">
+
+        <div
+          class="timer-circle"
+          id="count1">
+          10
+        </div>
+
+        <div class="timer-text">
+
+          <strong>
+            Verification complete
+          </strong>
+
+          <small>
+            Please wait before next task.
+          </small>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================= -->
+  <!-- TASK 3 -->
+  <!-- ========================= -->
+
+  <div
+    class="task locked"
+    id="task2">
+
+    <div class="number">
+      03
+    </div>
+
+    <div class="icon telegram">
+      ✈
+    </div>
+
+    <div class="content">
+
+      <div class="top">
+
+        <div>
+
+          <div class="platform">
+            TELEGRAM
+          </div>
+
+          <h2>
+            Join our Telegram channel
+          </h2>
+
+        </div>
+
+        <div
+          class="status"
+          id="status2">
+          LOCKED
+        </div>
+
+      </div>
+
+      <p class="description">
+        Join our Telegram channel and
+        verify the final task.
+      </p>
+
+      <div class="buttons">
+
+        <a
+          class="btn open"
+          href="https://t.me/TheEagle09inc"
+          target="_blank">
+          Open Telegram ↗
+        </a>
+
+        <button
+          class="btn verify"
+          id="verify2"
+          onclick="verifyTask(2)"
+          disabled>
+          Verify
+        </button>
+
+      </div>
+
+      <div
+        class="timer"
+        id="timer2"
+        style="display:none;">
+
+        <div
+          class="timer-circle"
+          id="count2">
+          10
+        </div>
+
+        <div class="timer-text">
+
+          <strong>
+            Task completed
+          </strong>
+
+          <small>
+            All tasks are now completed.
+          </small>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- COMPLETE MESSAGE -->
+
+  <div
+    class="complete"
+    id="complete"
+    style="display:none;">
+
+    <div class="complete-icon">
+      🦅
+    </div>
+
+    <div>
+
+      <strong>
+        All Tasks Completed!
+      </strong>
+
+      <p>
+        Thanks for supporting THE EAGLE⁰⁹.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <footer>
+    THE EAGLE⁰⁹ • OFFICIAL TASK CENTER
+  </footer>
+
+</div>
+
+
+<script>
+
+/* ============================
+   TASK SYSTEM
+============================ */
+
+let completed = 0;
+
+function updateProgress(){
+
+  document.getElementById("progressText")
+    .innerText =
+    completed + " / 3 Completed";
+
+  document.getElementById("progressBar")
+    .style.width =
+    (completed / 3 * 100) + "%";
+
+
+  for(let i = 0; i < 3; i++){
+
+    const task =
+      document.getElementById("task" + i);
+
+    const verify =
+      document.getElementById("verify" + i);
+
+    const status =
+      document.getElementById("status" + i);
+
+
+    if(i < completed){
+
+      task.classList.remove("locked");
+      task.classList.remove("active");
+      task.classList.add("completed");
+
+      status.innerText =
+        "COMPLETED";
+
+      verify.disabled = true;
+
+    }
+
+    else if(i === completed){
+
+      task.classList.remove("locked");
+      task.classList.add("active");
+
+      status.innerText =
+        "AVAILABLE";
+
+      verify.disabled = false;
+
+    }
+
+    else{
+
+      task.classList.add("locked");
+      task.classList.remove("active");
+
+      status.innerText =
+        "LOCKED";
+
+      verify.disabled = true;
+
+    }
+
+  }
+
+
+  if(completed === 3){
+
+    document.getElementById("complete")
+      .style.display = "flex";
+
+  }
+
+}
+
+
+/* ============================
+   VERIFY TASK
+============================ */
+
+function verifyTask(index){
+
+  if(index !== completed){
+    return;
+  }
+
+
+  const verify =
+    document.getElementById("verify" + index);
+
+  const timer =
+    document.getElementById("timer" + index);
+
+  const count =
+    document.getElementById("count" + index);
+
+
+  verify.disabled = true;
+
+  timer.style.display = "flex";
+
+
+  let seconds = 10;
+
+  count.innerText = seconds;
+
+
+  const interval =
+    setInterval(function(){
+
+      seconds--;
+
+      count.innerText =
+        seconds;
+
+
+      if(seconds <= 0){
+
+        clearInterval(interval);
+
+
+        timer.style.display =
+          "none";
+
+
+        completed++;
+
+
+        updateProgress();
+
+
+        if(completed < 3){
+
+          setTimeout(function(){
+
+            document.getElementById(
+              "task" + completed
+            ).scrollIntoView({
+              behavior:"smooth",
+              block:"center"
+            });
+
+          },300);
+
+        }
+
+      }
+
+    },1000);
+
+}
+
+
+/* INITIAL */
+
+updateProgress();
+
+</script>
+
+</body>
+</html>
